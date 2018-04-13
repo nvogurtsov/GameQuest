@@ -1,4 +1,5 @@
-import msvcrt, os
+import msvcrt
+import os
 import time
 
 from Hero import *
@@ -37,7 +38,7 @@ def fight():
         print(name_info + " got rekt")
 
     pr = ''
-    #print("Searching for pedrilas")
+    # print("Searching for pedrilas")
     while True:
         chance = random.randint(1, 10)
         time.sleep(farming_speed*time_wrap)
@@ -68,7 +69,7 @@ def fight():
             break
 
 
-#-----------MAIN-----------------
+# -----------MAIN-----------------
 
 
 poring = Enemy("Poring", 150, 5, 10, "jellopy")
@@ -83,7 +84,7 @@ statistic = Statistics(0, 0, 0, 0)
 information()
 
 while True:
-    #os.system('cls')
+    # os.system('cls')
     try:
         choice = msvcrt.getch().decode('utf-8')
     except UnicodeDecodeError:

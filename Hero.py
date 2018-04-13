@@ -15,6 +15,7 @@ class Hero:
         self.stats = {"str": 1, "sta": 1, "int": 1, "agi": 1}
         self.pisos = 5
         self.inventory = {}
+        self.cards = {}
 
     def change_health(self, dmg):
         self.health += dmg
@@ -55,33 +56,42 @@ class Hero:
         print("Name: " + self.name + ", Level: " + str(self.lvl) + ", Race: " + self.race)
         print("Health: " + str(self.health) + ", Current exp: " + str(self.exp) + ", Zeny: "
               + str(self.zeny) + ", Pisos status: " + str(self.pisos))
-        #self.show_stat()
+        # self.show_stat()
 
     def show_stat(self):
         print("STR:" + str(self.stats["str"]) + " STA:" + str(self.stats["sta"]) + " INT:" + str(self.stats["int"]))
 
     def show_inventory(self):
+        print("==== Items ====")
         for item in self.inventory:
             print(item + ": " + str(self.inventory[item]))
 
-    def get_loot(self, foe_loot):
-        loot_chance = random.randint(7, 7)
-        card_chance = random.randint(1, 10000)
-        print(loot_chance, card_chance)
-        if loot_chance == 7:
+        print("==== Cards ====")
+        for card in self.cards:
+            print(card + ": " + str(self.cards[card]))
+
+    def get_loot(self, foe_loot, foe_name, foe_loot_chance):
+        loot_chance = random.randint(1, foe_loot_chance)
+        card_chance = random.randint(1, 100)
+        # print(loot_chance, card_chance)
+        if loot_chance == foe_loot_chance:
             print(foe_loot + " dropped")
             if foe_loot not in self.inventory:
                 self.inventory[foe_loot] = 1
             else:
                 self.inventory[foe_loot] += 1
-        if card_chance == 777:
-            print(self.name + " card dropped")
+        if card_chance == 69:
+            print(foe_name + " card dropped")
+            if foe_name not in self.cards:
+                self.cards[foe_name] = 1
+            else:
+                self.cards[foe_name] += 1
 
 
 hero = Hero("asd", "a")
 
-hero.get_loot("jelopy")
-hero.get_loot("jelopy")
-hero.get_loot("jelopy")
-hero.get_loot("lool")
+# hero.get_loot("jelopy")
+# hero.get_loot("jelopy")
+hero.get_loot("bone", "skeleton", 20)
+hero.get_loot("apple", "poring", 25)
 hero.show_inventory()
